@@ -17,11 +17,11 @@ The GUI allows you to label and tag of data through convenient keyboard shortcut
 
 ### Use Cases
 
-- You have just collected an unlabeled data, by crawling a website for example, and need to label it. You could do this in a spreadsheet, but using bella will be faster and more covenient.
+- You have just collected a bunch of unlabeled data, by crawling a website for example, and need to label it. You could do this in a spreadsheet, but using bella will likely be faster and more covenient.
 
-- You are hiring people to perform data labeling. Instead of going them instructions on how to work with spreadsheets and CSV files, they can use bella to label data for you. 
+- You are hiring people to perform data labeling. Instead of giving them instructions on how to work with spreadsheets and CSV files, you can point them to your bella project.
 
-- You trained a classifier and need to evaluate its performance. By loading predictions and labels into bella you can easily visualize results (e.g. confusion matrices) or view classification metrics such as accuracy, recall and F1 scores.
+- You trained a classifier and need to evaluate its performance. By loading predictions and labels into bella you can easily visualize results (e.g. confusion matrices) and view classification metrics such as accuracy, recall and F1 scores.
 
 ### Example Usage
 
