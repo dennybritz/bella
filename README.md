@@ -65,6 +65,9 @@ tags:
   - retweet
 ```
 
+Advanced configuration can be done via Javascript. Documentation to follow.
+
+
 ### Display Types
 
 Internally, each display type is implemented as a React component.
