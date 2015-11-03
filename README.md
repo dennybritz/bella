@@ -67,11 +67,13 @@ tags:
 
 ### Display Types
 
+Internally, each display type is implemented as a React component.
+
 #### `Post`
 
 A post is a raw body of text with an associated author and timestamp. Social media posts, reviews, and blog posts fit well into the `Post` category. 
 
-Parameters:
+Properties:
 
 - text: string (required)
 - author: string
@@ -83,7 +85,7 @@ Parameters:
 
 Reads a CSV file.
 
-Parameters:
+Properties:
 
 - columns: Array of column names (required)
 - id: the index of the id column
@@ -106,7 +108,7 @@ Same as `csv`, but does not require the `columns` parameter.
 
 Read a valid JSON array with each element representing one record.
 
-Parameters:
+Properties:
 
 - id: Optionally map a JSON key to the id column. If the JSON object contain an `id` key it'll be mapped by default.
 
@@ -128,9 +130,16 @@ Same as `json`, but instead of reading JSON array, it parses a newline-separated
 
 Bella never modifies the original data. It only adds metadata such as tags and labels.
 
+#### Projects
+
+Each bella project corresponds to a folder that contains a `.bellarc` file.
+
 #### Storage Layer
 
-All data is stored in a [RethinkDB](http://rethinkdb.com/) database. Each record has column names as specified in the input definition, plus additional `_label`, `_tags`, `_prediction`, `_createdAt` and `_updatedAt` columns. The `events` table keeps track of all actions performed on the record, e.g. changes in labels.
+- All data is stored in a [RethinkDB](http://rethinkdb.com/) database. Each record has column names as specified in the input definition, plus additional `_label`, `_tags`, `_prediction`,=, `_createdAt` and `_updatedAt` columns.
+- The `events` table keeps track of all actions performed on the record, e.g. changes in labels.
+- The `comments` table stores comments for all items.
+
 
 
 ### Configuration Reference
