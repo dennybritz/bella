@@ -73,28 +73,55 @@ A post is a raw body of text with an associated author and timestamp. Social med
 
 Parameters:
 
-- text: string
+- text: string (required)
 - author: string
 - time: unix timestamp or ISO 8601 date
-
 
 ### Input Types
 
 #### `csv`
 
-TODO
+Reads a CSV file.
+
+Parameters:
+
+- columns: Array of column names (required)
+- id: the index of the id column
+
+```yaml
+# TODO
+```
+
 
 #### `csv-with-headers`
 
-TODO
+Same as `csv`, but does not require the `columns` parameter.
+
+```yaml
+# TODO
+```
+
+
+#### `json`
+
+Read a valid JSON array with each element representing one record.
+
+Parameters:
+
+- id: Optionally map a JSON key to the id column. If the JSON object contain an `id` key it'll be mapped by default.
+
+```yaml
+# TODO
+```
+
 
 #### `json-sequence`
 
-TODO
+Same as `json`, but instead of reading JSON array, it parses a newline-separated list of JSON objects.
 
-#### `json-array`
-
-TODO
+```yaml
+# TODO
+```
 
 
 ### Architecture
