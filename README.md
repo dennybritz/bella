@@ -47,7 +47,7 @@ The configuration is specified in a `.bellacfg` file in YAML format:
 ```yaml
 ---
 
-input:
+input:  
   type: csv-with-headers
   id: 0
 display:
@@ -73,12 +73,38 @@ A post is a raw body of text with an associated author and timestamp. Social med
 
 Parameters:
 
-- `text`: string
-- `author`: string
-- `time`: unix timestamp or ISO 8601 date
+- text: string
+- author: string
+- time: unix timestamp or ISO 8601 date
+
+
+### Input Types
+
+#### `csv`
+
+TODO
+
+#### `csv-with-headers`
+
+TODO
+
+#### `json-sequence`
+
+TODO
+
+#### `json-array`
+
+TODO
 
 
 ### Architecture
+
+Bella never modifies the original data. It only adds metadata such as tags and labels.
+
+#### Storage Layer
+
+All data is stored in a [RethinkDB](http://rethinkdb.com/) database. Each record has column names as specified in the input definition, plus additional `_label`, `_tags`, `_prediction`, `_createdAt` and `_updatedAt` columns. The `events` table keeps track of all actions performed on the record, e.g. changes in labels.
+
 
 ### Configuration Reference
 
