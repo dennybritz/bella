@@ -6,18 +6,18 @@ bella is a tool that helps managing, labeling and evaluating natural language da
 
 Many tasks in Natural Language Processing (NLP) require labeled data. Examples include Sentiment Analysis, Text Categorization, Entity Linking and POS tagging. But creating and verifying such labeled data can be a painful process that is often done in Google Spreadsheets, raw CSV files or through external services such as Amazon Mechanical Turk. Typically the output of such a process is then transformed in some way before it can be fed into a Machine Learning system. If you want to re-label any of the data you may even need a full ETL pipeline.
 
-Building a Machine Learning classifier typically resembles a [Build-Measure-Learn](http://steveblank.com/2015/05/06/build-measure-learn-throw-things-against-the-wall-and-see-if-they-work/) cycle. You build a classifier, measure its performance, learn about what kind of mistakes it makes, and then improve it. I found that most my time is spent measuring and learning, which involves collecting, inspecting, and labeling training and test data.
+Building a Machine Learning model often happens in a [Build-Measure-Learn](http://steveblank.com/2015/05/06/build-measure-learn-throw-things-against-the-wall-and-see-if-they-work/) cycle. You build the model, measure its performance, learn about what kind of mistakes it makes, and then improve it. I found that most my time is spent measuring and learning, which involves collecting, inspecting, and labeling training and test data.
 
 bella aims to make evaluation and labeling less painful by providing: 
 
-1. graphical user interface
-2. database backend to manage labeled data
+1. A graphical user interface
+2. A database backend to manage labeled data
 
-The GUI allows you to label and tag of data through convenient keyboard shortcuts and swipe gestures, visualize metrics and confusion matrices, and more. The database backend manages labeled data and exports it into various formats.
+The GUI allows you to label and tag of data through convenient keyboard shortcuts and swipe gestures and visualize metrics, confusion matrices, and more. The database backend manages labeled data and exports it into various formats.
 
 ### Use Cases
 
-- You have just collected a bunch of unlabeled data, by crawling a website for example, and need to label it. You could do this in a spreadsheet, but using bella is likely to be faster and more convenient.
+- You have just collected unlabeled data, by crawling a website for example, and need to label it. You could do this in a spreadsheet, but using bella is probably faster and more convenient.
 
 - You are hiring people to perform data labeling. Instead of giving them instructions on how to work with spreadsheets and CSV files, you can point them to your bella project.
 
@@ -25,7 +25,7 @@ The GUI allows you to label and tag of data through convenient keyboard shortcut
 
 ### Example Usage
 
-Let's assume you've collected a dataset of raw Tweets that you want to label as positive, negative, or neutral. In addition, you may want to flag ads and retweets so that you can later remove them from the data. In CSV format a row  of your data may look like this:
+Let's assume you've collected a dataset of raw Tweets that you want to label as positive, negative, or neutral. In addition, you may want to flag ads and retweets so that you can remove them from the data later on. In CSV format, a row  of your data may look like this:
 
 ```
 id,author,time,text
@@ -35,14 +35,14 @@ id,author,time,text
 To configure the bella project we need to specify the following:
 
 - The input format (CSV with header)
-- An optional unique id column (0 in the CSV above)
+- An optional unique id column (column 0 in the CSV above)
 - How bella should display an item in the GUI (as a `Post`)
 - Labels we want to support (positive, negative, neutral)
 - Tags we want to support (ad, retweet)
 
-Note that this configuration is dynamic. You can change it anytime and add more tags for example.
+Note that this configuration is dynamic. You can change at any time, to add additional tags for example.
 
-The configuration is specified in a `.bellacfg` file in YAML format:
+The configuration can be specified using a `.bellacfg` file in YAML format as follows:
 
 ```yaml
 ---
@@ -65,7 +65,7 @@ tags:
   - retweet
 ```
 
-Advanced configuration can be done via Javascript. Documentation to follow.
+You can also write the configuration in Javascript. This gives you additional flexibility. Documentation for this is TODO.
 
 
 ### Display Types
@@ -76,11 +76,11 @@ Internally, each display type is implemented as a React component.
 
 A post is a raw body of text with an associated author and timestamp. Social media posts, reviews, and blog posts fit well into the `Post` category. 
 
-Properties:
+**Properties:**
 
-- text: string (required)
-- author: string
-- time: unix timestamp or ISO 8601 date
+- *text*: string (required)
+- *author*: string
+- *time*: unix timestamp or ISO 8601 date
 
 ### Input Types
 
