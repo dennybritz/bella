@@ -86,7 +86,8 @@ You can import data using the command line or the GUI. On the command line:
 
 
 ```bash
-./bin/bella-import --project my-project \
+./bin/bella-import \
+  --project my-project \
   --format csv \
   --colums "id,author,time,text" \
   --id 0 \ 
