@@ -34,6 +34,7 @@ id,author,time,text
 
 To configure the bella project we need to specify the following:
 
+- A unique name for the project
 - How bella should display an item in the GUI (as a `Post`)
 - Labels we want to support (positive, negative, neutral)
 - Tags we want to support (ad, retweet)
@@ -45,6 +46,7 @@ The configuration can be specified using a `.bellacfg` file in YAML format as fo
 ```yaml
 ---
 
+name: my-project
 display:
   type: Post
   parameters:
@@ -84,7 +86,7 @@ You can import data using the command line or the GUI. On the command line:
 
 
 ```bash
-./bin/bella-importa --format csv --colums "id,author,time,text" --id 0 ./data/data.csv
+./bin/bella-import --format csv --colums "id,author,time,text" --id 0 ./data/data.csv
 ```
 
 #### `csv`
