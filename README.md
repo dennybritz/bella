@@ -34,8 +34,6 @@ id,author,time,text
 
 To configure the bella project we need to specify the following:
 
-- The input format (CSV with header)
-- An optional unique id column (column 0 in the CSV above)
 - How bella should display an item in the GUI (as a `Post`)
 - Labels we want to support (positive, negative, neutral)
 - Tags we want to support (ad, retweet)
@@ -47,9 +45,6 @@ The configuration can be specified using a `.bellacfg` file in YAML format as fo
 ```yaml
 ---
 
-input:  
-  type: csv-with-headers
-  id: 0
 display:
   type: Post
   parameters:
@@ -78,55 +73,47 @@ A post is a raw body of text with an associated author and timestamp. Social med
 
 **Properties:**
 
-- *text*: string (required)
-- *author*: string
-- *time*: unix timestamp or ISO 8601 date
+- text: string (required)
+- author: string
+- time: unix timestamp or ISO 8601 date
 
-### Input Types
+
+### Importing Data
+
+You can import data using the command line or the GUI. On the command line:
+
+
+```bash
+./bin/bella-importa --format csv --colums "id,author,time,text" --id 0 ./data/data.csv
+```
 
 #### `csv`
 
-Reads a CSV file.
+Reads from a CSV file.
 
 Properties:
 
-- columns: Array of column names (required)
-- id: the index of the id column
-
-```yaml
-# TODO
-```
+- columns: A comma-separated list of column names. Defaults to `1,2,3,...`.
+- id: The 0-based column index of the id column. If not provided bella will generate a new unique id for each record.
 
 
 #### `csv-with-headers`
 
-Same as `csv`, but does not require the `columns` parameter.
-
-```yaml
-# TODO
-```
+Same as `csv`, but the column names are automatically read from the first row.
 
 
 #### `json`
 
-Read a valid JSON array with each element representing one record.
+Reads a valid JSON array where each element represents one record.
 
 Properties:
 
-- id: Optionally map a JSON key to the id column. If the JSON object contain an `id` key it'll be mapped by default.
-
-```yaml
-# TODO
-```
-
+- id: Map a specific JSON key to the id column. If the JSON object contain an `id` key it'll be mapped by default. If not provided and no `id` key is found, bella will generate a unique id for each record.
 
 #### `json-sequence`
 
-Same as `json`, but instead of reading JSON array, it parses a newline-separated list of JSON objects.
+Same as `json`, but parses a newline-separated list of JSON objects instead of a JSON array.
 
-```yaml
-# TODO
-```
 
 
 ### Architecture
