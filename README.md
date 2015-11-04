@@ -1,6 +1,6 @@
 # bella
 
-Bblla is a software that makes labeling naural language datasets less painful.
+bella is a tool that helps managing, labeling and evaluating natural language datasets.
 
 ### Motivation
 
@@ -10,14 +10,14 @@ Building a Machine Learning classifier typically resembles a [Build-Measure-Lear
 
 bella aims to make evaluation and labeling less painful by providing: 
 
-1. graphical user inteface
+1. graphical user interface
 2. database backend to manage labeled data
 
 The GUI allows you to label and tag of data through convenient keyboard shortcuts and swipe gestures, visualize metrics and confusion matrices, and more. The database backend manages labeled data and exports it into various formats.
 
 ### Use Cases
 
-- You have just collected a bunch of unlabeled data, by crawling a website for example, and need to label it. You could do this in a spreadsheet, but using bella is likely to be faster and more covenient.
+- You have just collected a bunch of unlabeled data, by crawling a website for example, and need to label it. You could do this in a spreadsheet, but using bella is likely to be faster and more convenient.
 
 - You are hiring people to perform data labeling. Instead of giving them instructions on how to work with spreadsheets and CSV files, you can point them to your bella project.
 
