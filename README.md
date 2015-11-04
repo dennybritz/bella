@@ -69,7 +69,7 @@ You can also write the configuration in Javascript. This gives you additional fl
 
 Internally, each display type is implemented as a React component.
 
-#### `Post`
+##### `Post`
 
 A post is a raw body of text with an associated author and timestamp. Social media posts, reviews, and blog posts fit well into the `Post` category. 
 
@@ -99,12 +99,12 @@ Properties:
 - id: The 0-based column index of the id column. If not provided bella will generate a new unique id for each record.
 
 
-#### `csv-with-headers`
+##### `csv-with-headers`
 
 Same as `csv`, but the column names are automatically read from the first row.
 
 
-#### `json`
+##### `json`
 
 Reads a valid JSON array where each element represents one record.
 
@@ -112,7 +112,7 @@ Properties:
 
 - id: Map a specific JSON key to the id column. If the JSON object contain an `id` key it'll be mapped by default. If not provided and no `id` key is found, bella will generate a unique id for each record.
 
-#### `json-sequence`
+##### `json-sequence`
 
 Same as `json`, but parses a newline-separated list of JSON objects instead of a JSON array.
 
