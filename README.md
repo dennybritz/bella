@@ -86,7 +86,11 @@ You can import data using the command line or the GUI. On the command line:
 
 
 ```bash
-./bin/bella-import --format csv --colums "id,author,time,text" --id 0 ./data/data.csv
+./bin/bella-import --project my-project \
+  --format csv \
+  --colums "id,author,time,text" \
+  --id 0 \ 
+  ./data/data.csv
 ```
 
 ##### `csv`
@@ -124,7 +128,7 @@ Bella never modifies the original data. It only adds metadata such as tags and l
 
 #### Projects
 
-Each bella project corresponds to a folder that contains a `.bellarc` file.
+Each bella project corresponds to a folder that contains a `.bellarc` file (or `bellarc.js` file). Projects are uniquely identified by their name.
 
 #### Storage Layer
 
