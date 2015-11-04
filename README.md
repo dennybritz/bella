@@ -89,7 +89,7 @@ You can import data using the command line or the GUI. On the command line:
 ./bin/bella-import --format csv --colums "id,author,time,text" --id 0 ./data/data.csv
 ```
 
-#### `csv`
+##### `csv`
 
 Reads from a CSV file.
 
