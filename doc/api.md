@@ -11,6 +11,8 @@ Bella is an *API-first* system. Bella ships with a GUI that integrates its API, 
 
 There is no API authentication.
 
+### Endpoints
+
 
 #### `GET /api/v1/projects`
 
