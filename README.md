@@ -6,14 +6,14 @@ bella is a tool that helps managing, labeling and evaluating natural language da
 
 Many tasks in Natural Language Processing (NLP) require labeled data. Examples include Sentiment Analysis, Text Categorization, Entity Linking and POS tagging. But creating and verifying such labeled data can be a painful process that is often done in Google Spreadsheets, raw CSV files or through external services such as Amazon Mechanical Turk. Typically the output of such a process is then transformed in some way before it can be fed into a Machine Learning system. If you want to re-label any of the data you may even need a full ETL pipeline.
 
-Building a Machine Learning model often happens in a [Build-Measure-Learn](http://steveblank.com/2015/05/06/build-measure-learn-throw-things-against-the-wall-and-see-if-they-work/) cycle. You build the model, measure its performance, learn about what kind of mistakes it makes, and then improve it. I found that most my time is spent measuring and learning, which involves collecting, inspecting, and labeling training and test data.
+Building a Machine Learning model is often a [Build-Measure-Learn](http://steveblank.com/2015/05/06/build-measure-learn-throw-things-against-the-wall-and-see-if-they-work/) cycle. You build the model, measure its performance, learn about what kind of mistakes it makes, and then improve it. I found that most my time is spent measuring and learning, which involves collecting, inspecting, and labeling training and test data.
 
 bella aims to make evaluation and labeling less painful by providing: 
 
 1. A graphical user interface
 2. A database backend to manage labeled data
 
-The GUI allows you to label and tag of data through convenient keyboard shortcuts and swipe gestures and visualize metrics, confusion matrices, and more. The database backend manages labeled data and exports it into various formats.
+The GUI allows you to label and tag of data through convenient keyboard shortcuts and swipe, and visualize metrics, confusion matrices, and more. The database backend manages labeled data and exports it into various formats.
 
 ### Use Cases
 
@@ -25,23 +25,21 @@ The GUI allows you to label and tag of data through convenient keyboard shortcut
 
 ### Example Usage
 
-Let's assume you've collected a dataset of raw Tweets that you want to label as positive, negative, or neutral. In addition, you may want to flag ads and retweets so that you can remove them from the data later on. In CSV format, a row  of your data may look like this:
+Let's assume you've collected a dataset of raw Tweets and you want to label them as positive, negative, or neutral. In addition, you may want to flag certain tweets as  *ads* and *retweets* so that you can remove them from your data later on. In CSV format, a row of your data may look like this:
 
 ```
 id,author,time,text
 1337,@dennybritz,1446545410172,"You must check out bella!!1"
 ```
 
-To configure the bella project we need to specify the following:
+To configure a bella project we need to specify the following:
 
 - A unique name for the project
 - How bella should display an item in the GUI (as a `Post`)
 - Labels we want to support (positive, negative, neutral)
 - Tags we want to support (ad, retweet)
 
-Note that this configuration is dynamic. You can change at any time, to add additional tags for example.
-
-The configuration can be specified using a `.bellacfg` file in YAML format as follows:
+Note that this configuration is dynamic. You could change it any time and add additional tags for example. The configuration is specified in a `.bellacfg` file in YAML format as follows:
 
 ```yaml
 ---
@@ -62,16 +60,16 @@ tags:
   - retweet
 ```
 
-You can also write the configuration in Javascript. This gives you additional flexibility. Documentation for this is TODO.
+You can also write your configuration in Javascript. This gives you additional flexibility. Documentation for this is TODO.
 
 
 ### Display Types
 
-Internally, each display type is implemented as a React component.
+Display Types describe how your records are rendered in the GUI, Internally, each display type is implemented as a reactjs component.
 
 ##### `Post`
 
-A post is a raw body of text with an associated author and timestamp. Social media posts, reviews, and blog posts fit well into the `Post` category. 
+A post is a raw body of text, (optionally) associated with an author and timestamp. Social media posts, reviews, and blog posts are good fits for the `Post` category. 
 
 **Properties:**
 
@@ -82,7 +80,7 @@ A post is a raw body of text with an associated author and timestamp. Social med
 
 ### Importing Data
 
-You can import data using the command line or the GUI. On the command line:
+You can import data using the command line or the GUI.
 
 
 ```bash
@@ -125,19 +123,23 @@ Same as `json`, but parses a newline-separated list of JSON objects instead of a
 
 ### Architecture
 
-Bella never modifies the original data. It only adds metadata such as tags and labels.
+A few key points:
+
+- Bella never modifies the original data. It only adds metadata such as tags and labels to the data.
+- Bella used [RethinkDB](http://rethinkdb.com/) for data storage.
+- All data is scoped by project.
 
 #### Projects
 
-Each bella project corresponds to a folder that contains a `.bellarc` file (or `bellarc.js` file). Projects are uniquely identified by their name.
+Each bella project corresponds to a folder that contains a `.bellarc` file (or `bellarc.js` file). Projects are uniquely identified by their name, and each project lives in their own database.
 
 #### Storage Layer
 
-- All data is stored in a [RethinkDB](http://rethinkdb.com/) database. Each record has column names as specified in the input definition, plus additional `_label`, `_tags`, `_prediction`,=, `_createdAt` and `_updatedAt` columns.
+- All data is stored in a [RethinkDB](http://rethinkdb.com/) database in a `records` table. Each record's field names are specified in the input definition and bella adds internal `_label`, `_tags`, `_prediction`, `_createdAt` and `_updatedAt` fields.
 - The `events` table keeps track of all actions performed on the record, e.g. changes in labels.
-- The `comments` table stores comments for all items.
+- The `comments` table stores comments on all items.
 
-
+Bella also has an metadata database called `bella` where it stores the project information.
 
 ### Configuration Reference
 
