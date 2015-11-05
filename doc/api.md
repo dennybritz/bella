@@ -2,7 +2,7 @@
 
 Bella is an *API-first* system. Bella ships with a GUI that integrates its API, but there is nothing that prevents you from building your own client that consumes the bella API.
 
-# Convenience shortcuts
+### Convenience shortcuts
 
 - `/api/v1/p/...` instead `of /api/v1/projects/...`
 
