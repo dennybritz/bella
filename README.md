@@ -2,6 +2,12 @@
 
 bella is a tool that helps managing, labeling and evaluating natural language datasets.
 
+More Documentation:
+
+- [API Documentation](doc/api.md)
+- [Extending Bella]
+- [Configuration Reference]
+
 ### Motivation
 
 Many tasks in Natural Language Processing (NLP) require labeled data. Examples include Sentiment Analysis, Text Categorization, Entity Linking and POS tagging. But creating and verifying such labeled data can be a painful process that is often done in Google Spreadsheets, raw CSV files or through external services such as Amazon Mechanical Turk. Typically the output of such a process is then transformed in some way before it can be fed into a Machine Learning system. If you want to re-label any of the data you may even need a full ETL pipeline.
@@ -140,7 +146,3 @@ Each bella project corresponds to a folder that contains a `.bellarc` file (or `
 - The `comments` table stores comments on all items.
 
 Bella also has an metadata database called `bella` where it stores the project information.
-
-### Configuration Reference
-
-TODO
