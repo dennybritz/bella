@@ -5,8 +5,8 @@ bella is a tool that helps managing, labeling and evaluating natural language da
 More Documentation:
 
 - [API Documentation](doc/api.md)
-- [Extending Bella]()
-- [Configuration Reference]()
+- [Extending Bella](doc/extending.md)
+- [Configuration Reference](doc/configuration-reference.md)
 
 ### Motivation
 
