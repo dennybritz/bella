@@ -1,0 +1,27 @@
+{
+  "name": "bella",
+  "version": "0.1.0",
+  "description": "Labeling and Evaluation Tool for NLP Tasks",
+  "main": "app.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennybritz/bella.git"
+  },
+  "keywords": [
+    "nlp",
+    "machine",
+    "learning"
+  ],
+  "author": "Denny Britz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dennybritz/bella/issues"
+  },
+  "homepage": "https://github.com/dennybritz/bella#readme"
+}
