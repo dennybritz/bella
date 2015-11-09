@@ -1,8 +1,8 @@
 module.exports = {
-  entry: ["./js/app.jsx", "./css/main.scss"],
+  entry: [".ui//js/app.jsx", "./ui/css/main.scss"],
   output: {
     path: __dirname,
-    filename: "public/js/bundle.js"
+    filename: "./ui/public/js/bundle.js"
   },
   module: {
     loaders: [
