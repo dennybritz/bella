@@ -1,5 +1,5 @@
 module.exports = {
-  entry: [".ui//js/app.jsx", "./ui/css/main.scss"],
+  entry: ["./ui/js/app.jsx", "./ui/css/main.scss"],
   output: {
     path: __dirname,
     filename: "./ui/public/js/bundle.js"
@@ -19,5 +19,8 @@ module.exports = {
         loader: "style!css!sass"
       }
     ]
-  }
+  },
+  watchOptions: {
+    poll: 1000
+  }  
 };
