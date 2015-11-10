@@ -9,8 +9,6 @@ webserver:
 app:
   build: .
   volumes:
-    - ./js:/usr/src/app/js
-    - ./css:/usr/src/app/css
-    - ./public:/usr/src/app/public
-    - ./locales:/usr/src/app/locales
+    - ./ui:/usr/src/app/ui
+    - ./webpack.config.js:/usr/src/app/webpack.config.js
   command: npm run watch
