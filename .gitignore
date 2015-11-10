@@ -57,3 +57,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Bundled javascript
+bundle.js
