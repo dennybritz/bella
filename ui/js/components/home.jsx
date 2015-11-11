@@ -9,8 +9,8 @@ export class Home extends React.Component {
 
   render() {
     const records = [
-      { id: 1, text: 'Hi' },
-      { id: 2, text: 'Hi too' },
+      { id: 1, data: { text: 'Hi' }, labels: ['positive'], tags: ['ad', 'ignore'] },
+      { id: 2, data: { text: 'Hi too' }, labels: ['negative'] },
     ];
     return (
       <div className="bella-home">
