@@ -1,5 +1,4 @@
 import React from 'react';
-import { BasicRecord } from './basicRecord.jsx';
 
 export class JsonRecord extends React.Component {
 
@@ -10,9 +9,9 @@ export class JsonRecord extends React.Component {
   render() {
     const prettyJson = JSON.stringify(this.props.record.data, null, 2);
     return (
-      <BasicRecord {... this.props}>
+      <div className="bella-json-record">
         <pre><code>{prettyJson}</code></pre>
-      </BasicRecord>
+      </div>
     );
   }
 }

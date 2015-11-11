@@ -1,6 +1,12 @@
 import React from 'react';
+import Mousetrap from 'mousetrap';
+import { JsonRecord } from './record-types/jsonRecord.jsx';
 
-export class BasicRecord extends React.Component {
+const RECORD_FOR_TYPE = {
+  json: JsonRecord,
+};
+
+export class Record extends React.Component {
 
   static propTypes = {
     record: React.PropTypes.shape({
@@ -9,8 +15,20 @@ export class BasicRecord extends React.Component {
       labels: React.PropTypes.array,
       tags: React.PropTypes.array,
     }),
-    children: React.PropTypes.node.isRequired,
     isSelected: React.PropTypes.bool,
+    recordType: React.PropTypes.oneOf(['json']),
+    supportedLabels: React.PropTypes.arrayOf(React.PropTypes.string),
+    supportedTags: React.PropTypes.arrayOf(React.PropTypes.string),
+  }
+
+  componentDidUpdate() {
+    if (this.props.isSelected) {
+      this._mountKeyboardshortcuts();
+    }
+  }
+
+  _mountKeyboardshortcuts = () => {
+    Mousetrap.bind('l', () => console.log(`${this.props.record.id}`));
   }
 
   renderLabels() {
@@ -28,10 +46,12 @@ export class BasicRecord extends React.Component {
   }
 
   render() {
+    const record = this.props.record;
     const isSelected = this.props.isSelected;
+    const InnerRecord = RECORD_FOR_TYPE[this.props.recordType];
     return (
-      <div className={`bella-record bella-basic-record selected-${isSelected}`}>
-        {this.props.children}
+      <div className={`bella-record selected-${isSelected}`}>
+        <InnerRecord record={record}/>
         <div className="bella-record-labels">
           {this.renderLabels()}
         </div>

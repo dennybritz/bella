@@ -1,6 +1,6 @@
 import React from 'react';
 import Mousetrap from 'mousetrap';
-import { JsonRecord } from './record-types/jsonRecord.jsx';
+import { Record } from './record.jsx';
 
 export class RecordList extends React.Component {
 
@@ -44,10 +44,8 @@ export class RecordList extends React.Component {
 
   _renderRecord(record, idx) {
     const isSelected = this.state.selectedRecordIndex === idx;
-    if (this.props.recordType === 'json') {
-      return <JsonRecord isSelected={isSelected} record={record}/>;
-    }
-    return null;
+    const passedProps = _.pick(this.props, 'supportedLabels', 'supportedTags', 'recordType');
+    return (<Record {... passedProps} record={record} isSelected={isSelected}/>);
   }
 
   render() {
