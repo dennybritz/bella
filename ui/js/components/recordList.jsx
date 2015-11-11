@@ -17,12 +17,13 @@ export class RecordList extends React.Component {
   }
 
   state = {
-    activeRecord: null,
+    selectedRecordId: null,
   }
 
   _renderRecord(record) {
+    const isSelected = this.state.selectedRecordId === record.id;
     if (this.props.recordType === 'json') {
-      return <JsonRecord record={record}/>;
+      return <JsonRecord isSelected={isSelected} record={record}/>;
     }
     return null;
   }
