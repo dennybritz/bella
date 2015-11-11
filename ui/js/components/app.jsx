@@ -1,4 +1,6 @@
 import React from 'react';
+import { Navbar } from './navbar.jsx';
+import { Footer } from './footer.jsx';
 
 export class App extends React.Component {
 
@@ -9,7 +11,11 @@ export class App extends React.Component {
   render() {
     return (
       <div className="bella-app">
-        {this.props.children}
+        <Navbar/>
+        <div className="container">
+          {this.props.children}
+        </div>
+        <Footer/>
       </div>
     );
   }
