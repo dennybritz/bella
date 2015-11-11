@@ -1,4 +1,5 @@
 import React from 'react';
+import Mousetrap from 'mousetrap';
 import { JsonRecord } from './record-types/jsonRecord.jsx';
 
 export class RecordList extends React.Component {
@@ -17,11 +18,32 @@ export class RecordList extends React.Component {
   }
 
   state = {
-    selectedRecordId: null,
+    selectedRecordIndex: -1,
   }
 
-  _renderRecord(record) {
-    const isSelected = this.state.selectedRecordId === record.id;
+  componentDidMount() {
+    Mousetrap.bind('j', this._selectNextRecord);
+    Mousetrap.bind('k', this._selectPrevRecord);
+  }
+
+  _selectNextRecord = () => {
+    const currentIndex = this.state.selectedRecordIndex;
+    const nextIndex = Math.min(currentIndex + 1, this.props.records.length - 1);
+    this.setState({
+      selectedRecordIndex: nextIndex,
+    });
+  }
+
+  _selectPrevRecord = () => {
+    const currentIndex = this.state.selectedRecordIndex;
+    const nextIndex = Math.max(currentIndex - 1, 0);
+    this.setState({
+      selectedRecordIndex: nextIndex,
+    });
+  }
+
+  _renderRecord(record, idx) {
+    const isSelected = this.state.selectedRecordIndex === idx;
     if (this.props.recordType === 'json') {
       return <JsonRecord isSelected={isSelected} record={record}/>;
     }
@@ -32,9 +54,9 @@ export class RecordList extends React.Component {
     const records = this.props.records;
     return (
       <ul className="list-group">
-        { records.map(r => {
+        { records.map((r, idx) => {
           return (<li className="list-group-item" key={r.id}>
-            {this._renderRecord(r)}
+            {this._renderRecord(r, idx)}
           </li>);
         })}
       </ul>

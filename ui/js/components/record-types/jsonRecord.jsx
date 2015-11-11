@@ -10,7 +10,7 @@ export class JsonRecord extends React.Component {
   render() {
     const prettyJson = JSON.stringify(this.props.record.data, null, 2);
     return (
-      <BasicRecord {... this.props.record}>
+      <BasicRecord {... this.props}>
         <pre><code>{prettyJson}</code></pre>
       </BasicRecord>
     );
