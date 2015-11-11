@@ -69,9 +69,9 @@ tags:
 You can also write your configuration in Javascript. This gives you additional flexibility. Documentation for this is TODO.
 
 
-### Display Types
+### Record Types
 
-Display Types describe how your records are rendered in the GUI, Internally, each display type is implemented as a reactjs component.
+Record Types describe how your records are rendered in the GUI, Internally, each record type is implemented as a reactjs component.
 
 ##### `Post`
 

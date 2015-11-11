@@ -1,4 +1,5 @@
 import React from 'react';
+import { RecordList } from './recordList.jsx';
 
 export class Home extends React.Component {
 
@@ -7,9 +8,13 @@ export class Home extends React.Component {
   }
 
   render() {
+    const records = [
+      { id: 1, text: 'Hi' },
+      { id: 2, text: 'Hi too' },
+    ];
     return (
       <div className="bella-home">
-        <p>Hello World.</p>
+      <RecordList records={records}/>
       </div>
     );
   }
