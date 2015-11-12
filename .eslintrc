@@ -7,5 +7,7 @@ env:
   browser: true
   es6: true
   jquery: true
+globals:
+  _: true
 rules:
   react/no-multi-comp: 1
