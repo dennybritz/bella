@@ -35,7 +35,8 @@ class NavbarMenuRight extends React.Component {
     return (
       <div className="collapse navbar-collapse" id="bella-navbar-collapse">
         <ul className="nav navbar-nav navbar-right">
-          <li><a href="#">Label</a></li>
+          <li><a href="#">Browse</a></li>
+          <li><a href="#">Filters</a></li>
           <li><a href="#">Evaluate</a></li>
           <li className="dropdown">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span className="caret"/></a>
