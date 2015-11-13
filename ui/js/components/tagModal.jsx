@@ -30,7 +30,6 @@ export class TagModal extends React.Component {
   }
 
   _pickElementAt = (idx) => {
-    console.log(idx);
     if (idx >= this.props.tags.length) {
       return null;
     }

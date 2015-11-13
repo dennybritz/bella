@@ -11,8 +11,8 @@ export class Home extends React.Component {
     const supportedTags = ['ad', 'ignore', 'cool'];
     const supportedLabels = ['positive', 'neutral', 'negative'];
     const records = [
-      { id: 1, data: { text: 'Hi' }, labels: ['positive'], tags: ['ad', 'ignore'] },
-      { id: 2, data: { text: 'Hi too' }, labels: ['negative'] },
+      { id: 1, data: { text: 'Hi' }, label: 'positive', prediction: 'neutral', tags: ['ad', 'ignore'] },
+      { id: 2, data: { text: 'Hi too' }, labels: 'negative' },
     ];
     return (
       <div className="bella-home">

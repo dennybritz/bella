@@ -13,8 +13,9 @@ export class Record extends React.Component {
     record: React.PropTypes.shape({
       id: React.PropTypes.any.isRequired,
       data: React.PropTypes.object,
-      labels: React.PropTypes.array,
+      label: React.PropTypes.string,
       tags: React.PropTypes.array,
+      prediction: React.PropTypes.string,
     }),
     isSelected: React.PropTypes.bool,
     recordType: React.PropTypes.oneOf(['json']),
@@ -68,17 +69,22 @@ export class Record extends React.Component {
     return null;
   }
 
-  renderLabels() {
-    const labels = this.props.record.labels || [];
-    return labels.map((label) =>
-      <span key={label} className="label label-success">{label}</span>
-    );
+  renderLabel() {
+    const label = this.props.record.label;
+    if (!label) { return null; }
+    return (<span className="bella-record-label label label-success">{label}</span>);
+  }
+
+  renderPrediction() {
+    const prediction = this.props.record.prediction;
+    if (!prediction) { return null; }
+    return (<span className="bella-record-prediction label label-primary">{prediction}</span>);
   }
 
   renderTags() {
     const tags = this.props.record.tags || [];
     return tags.map((tag) =>
-      <span key={tag} className="label label-info">{tag}</span>
+      <span key={tag} className="bella-record-tag label label-info">{tag}</span>
     );
   }
 
@@ -90,7 +96,8 @@ export class Record extends React.Component {
       <div className={`bella-record selected-${isSelected}`}>
         <InnerRecord record={record}/>
         <div className="bella-record-labels">
-          {this.renderLabels()}
+          {this.renderLabel()}
+          {this.renderPrediction()}
         </div>
         <div className="bella-record-tags">
           {this.renderTags()}
