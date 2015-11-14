@@ -2,7 +2,7 @@
 
 This document described the functionality the user interface should support.
 
-### Displaying Record
+### Displaying Records
 
 ### Labeling and Tagging Records
 
